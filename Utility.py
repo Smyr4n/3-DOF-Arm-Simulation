@@ -1,18 +1,6 @@
 import numpy as np
 import numpy.typing as npt
-
-def Translate(D: npt.NDArray):
-    """
-    Returns a transformation matrix with the given 1x3 displacement vector.
-    """
-    T = np.array([
-        [0, 0, 0, D[0]],
-        [0, 0, 0, D[1]],
-        [0, 0, 0, D[2]],
-        [0, 0, 0, 1]
-    ])
-
-    return T
+from scipy.linalg import expm
 
 def SSM(K: npt.NDArray):
     """
@@ -34,3 +22,28 @@ def SSM(K: npt.NDArray):
     ])
 
     return ssm
+
+def Translate(D: npt.NDArray) -> npt.NDArray:
+    """
+    Returns a transformation matrix with the given 1x3 displacement vector.
+    """
+    T = np.array([
+        [0, 0, 0, D[0]],
+        [0, 0, 0, D[1]],
+        [0, 0, 0, D[2]],
+        [0, 0, 0, 1]
+    ])
+
+    return T
+
+def Rotate(KTheta: npt.NDArray) -> npt.NDArray:
+    """
+    Returns a transformation matrix rotating about the vector K * Theta.
+    """
+    ssm = SSM(KTheta)
+    T = np.block([
+        [expm(ssm), np.zeros((3, 1))],
+        [np.zeros((1, 3)), 1]
+    ])
+
+    return T
