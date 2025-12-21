@@ -1,4 +1,5 @@
 import numpy as np
+import numpy.typing as npt
 
 import Utility
 
@@ -9,21 +10,28 @@ class Robot():
         Creates the Robot to simulate.
         """
 
-        d = np.array([0, 0, 0])
-        theta = np.array([0, 0, 0])
-        a = np.array([0, 2, 2])
-        alpha = np.array([np.pi/2, 0, 0])
+        # Zero Configuration Parameters
+        self.d = np.array([0, 0, 0])
+        self.a = np.array([0, 2, 2])
+        self.alpha = np.array([np.pi/2, 0, 0])
 
-        frames = 3
-        zero_config = np.eye(4)
+        self.frames = 3
 
-        for i in range(frames):
-            pass
+        # Create the Zero Configuration of the Robot
+        self.zero_config = self.FK(np.zeros(3))
+        
 
-    def FK(self, joint1, joint2, joint3):
+    def FK(self, theta: npt.NDArray):
         """
         Returns the Homogeneous Transformation of the current pose.
         """
+        T = np.eye(4)
+        for i in range(self.frames):
+            T *= Utility.Translate(np.array([0, 0, self.d[i]]))
+            T *= Utility.Rotate(np.array([0, 0, theta[i]]))
+            T *= Utility.Translate(np.array([self.a[i], 0, 0]))
+            T *= Utility.Rotate(np.array([self.alpha[i], 0, 0]))
+        return T
 
     def IK(self):
         """
