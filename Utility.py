@@ -12,13 +12,11 @@ def SSM(K: npt.NDArray):
     Returns:
         S (Numpy Array): 3x3 skew-symmetric matrix of the given vector.
     """
-    if K.shape != (3, 1):
-        return None
     
     ssm = np.array([
-        [0, -K[3] , K[2]],
-        [K[3], 0, -K[1]],
-        [-K[2], K[1], 0]
+        [0, -K[2] , K[1]],
+        [K[2], 0, -K[0]],
+        [-K[1], K[0], 0]
     ])
 
     return ssm
