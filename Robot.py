@@ -28,11 +28,11 @@ class Robot():
         Ts = []
         T = np.eye(4)
         for i in range(self.frames):
-            T = T @ Utility.Translate(np.array([0, 0, self.d[i]]))
             T = T @ Utility.Rotate(np.array([0, 0, theta[i]]))
+            T = T @ Utility.Translate(np.array([0, 0, self.d[i]]))
             T = T @ Utility.Translate(np.array([self.a[i], 0, 0]))
             T = T @ Utility.Rotate(np.array([self.alpha[i], 0, 0]))
-            Ts.append(T)
+            Ts.append(T.copy())
         return np.array(Ts)
 
     def IK(self):
