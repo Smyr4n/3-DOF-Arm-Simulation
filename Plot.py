@@ -41,11 +41,6 @@ theta1_slider = Slider(plt.axes((0.15, 0.10, 0.7, 0.03)), 'θ1: ', -180.0, 180.0
 theta2_slider = Slider(plt.axes((0.15, 0.15, 0.7, 0.03)), 'θ2: ', -180.0, 180.0, valinit=0.0)
 theta3_slider = Slider(plt.axes((0.15, 0.20, 0.7, 0.03)), 'θ3: ', -180.0, 180.0, valinit=0.0)
 
-btn_ax_apply = plt.axes((0.15, 0.30, 0.20, 0.05))
-btn_ax_reset = plt.axes((0.40, 0.30, 0.20, 0.05))
-b_apply = Button(btn_ax_apply, 'Apply')
-b_reset = Button(btn_ax_reset, 'Reset')
-
 def _Update(event=None):
     thetas = np.array([theta1_slider.val, theta2_slider.val, theta3_slider.val])
     thetas = np.deg2rad(thetas)
@@ -53,17 +48,9 @@ def _Update(event=None):
     _Plot_Arm(ax3D, Ts)
     fig.canvas.draw_idle()
 
-def _Reset(event=None):
-    theta1_slider.set_val(0.0)
-    theta2_slider.set_val(0.0)
-    theta3_slider.set_val(0.0)
-    _Update()
-
 theta1_slider.on_changed(_Update)
 theta2_slider.on_changed(_Update)
 theta3_slider.on_changed(_Update)
-b_apply.on_clicked(_Update)
-b_reset.on_clicked(_Reset)
 
 plt.title("3-DOF Robot Arm Simulation")
 plt.show()
