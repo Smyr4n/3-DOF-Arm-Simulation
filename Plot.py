@@ -45,13 +45,17 @@ def Make_Plot(robot: Robot.Robot):
     plt.subplots_adjust(bottom=0.30)
 
     # Initialize slider parameters
-    theta1_slider = Slider(plt.axes((0.15, 0.10, 0.70, 0.03)), 'θ1: ', -180.0, 180.0, valinit=0.0)
-    theta2_slider = Slider(plt.axes((0.15, 0.15, 0.70, 0.03)), 'θ2: ', -180.0, 180.0, valinit=0.0)
-    theta3_slider = Slider(plt.axes((0.15, 0.20, 0.70, 0.03)), 'θ3: ', -180.0, 180.0, valinit=0.0)
+    theta1_slider = Slider(plt.axes((0.15, 0.10, 0.70, 0.03)), 'θ1: ', -180.0, 180.0)
+    theta2_slider = Slider(plt.axes((0.15, 0.15, 0.70, 0.03)), 'θ2: ', -180.0, 180.0)
+    theta3_slider = Slider(plt.axes((0.15, 0.20, 0.70, 0.03)), 'θ3: ', -180.0, 180.0)
 
     theta1_slider.on_changed(_Update)
     theta2_slider.on_changed(_Update)
     theta3_slider.on_changed(_Update)
+
+    theta1_slider.set_val(0.0)
+    theta2_slider.set_val(0.0)
+    theta3_slider.set_val(0.0)
 
     ax3D.set_title("3-DOF Robot Arm Simulation")
     plt.show()
