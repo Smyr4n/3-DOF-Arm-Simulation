@@ -59,6 +59,9 @@ def _Reset(event=None):
     theta3_slider.set_val(0.0)
     _Update()
 
+theta1_slider.on_changed(_Update)
+theta2_slider.on_changed(_Update)
+theta3_slider.on_changed(_Update)
 b_apply.on_clicked(_Update)
 b_reset.on_clicked(_Reset)
 
