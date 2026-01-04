@@ -26,8 +26,8 @@ class Robot():
         Returns the Homogeneous Transformations of each frame.
         """
         Ts = []
+        T = np.eye(4)
         for i in range(self.frames):
-            T = np.eye(4)
             T = T @ Utility.Translate(np.array([0, 0, self.d[i]]))
             T = T @ Utility.Rotate(np.array([0, 0, theta[i]]))
             T = T @ Utility.Translate(np.array([self.a[i], 0, 0]))
