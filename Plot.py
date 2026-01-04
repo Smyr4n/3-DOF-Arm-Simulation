@@ -10,7 +10,7 @@ robot = Robot.Robot()
 fig = plt.figure(figsize=(8, 8))
 ax3D = fig.add_subplot(111, projection='3d')
 
-def Plot_Arm(ax, Ts):
+def _Plot_Arm(ax, Ts):
     ax.cla()
 
     pos = []
@@ -46,21 +46,21 @@ btn_ax_reset = plt.axes((0.40, 0.30, 0.20, 0.05))
 b_apply = Button(btn_ax_apply, 'Apply')
 b_reset = Button(btn_ax_reset, 'Reset')
 
-def Update(event=None):
+def _Update(event=None):
     thetas = np.array([theta1_slider.val, theta2_slider.val, theta3_slider.val])
     thetas = np.deg2rad(thetas)
     Ts = robot.FK(thetas)
-    Plot_Arm(ax3D, Ts)
+    _Plot_Arm(ax3D, Ts)
     fig.canvas.draw_idle()
 
-def Reset(event=None):
+def _Reset(event=None):
     theta1_slider.set_val(0.0)
     theta2_slider.set_val(0.0)
     theta3_slider.set_val(0.0)
-    Update()
+    _Update()
 
-b_apply.on_clicked(Update)
-b_reset.on_clicked(Reset)
+b_apply.on_clicked(_Update)
+b_reset.on_clicked(_Reset)
 
 plt.title("3-DOF Robot Arm Simulation")
 plt.show()
