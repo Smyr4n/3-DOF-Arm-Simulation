@@ -10,7 +10,7 @@ class Robot():
         Creates the Robot to simulate.
         """
 
-        # Zero Configuration Parameters
+        # Zero configuration parameters
         self.d = np.array(d)
         self.a = np.array(a)
         self.alpha = np.array(alpha)
@@ -20,13 +20,13 @@ class Robot():
         
         self.frames = 3
 
-        # Create the Zero Configuration of the Robot
+        # Create the zero configuration of the robot
         self.zero_config = self.FK(np.zeros(3))
         
 
     def FK(self, theta: npt.NDArray):
         """
-        Returns the Homogeneous Transformations of each frame.
+        Returns the 4x4 homogeneous transformations of each frame.
         """
         Ts = []
         T = np.eye(4)
