@@ -1,6 +1,6 @@
 import json
 
-def Read_Config(dir):
+def Read_Config(dir) -> tuple:
     """
     Reads the given Config.json file and returns its DH parameters.
     """
