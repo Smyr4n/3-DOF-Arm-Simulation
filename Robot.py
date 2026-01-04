@@ -5,7 +5,7 @@ import Utility
 
 class Robot():
     
-    def __init__(self):
+    def __init__(self, d, a, alpha):
         """
         Creates the Robot to simulate.
         """
@@ -15,6 +15,9 @@ class Robot():
         self.a = np.array([0, 2, 2])
         self.alpha = np.array([np.pi/2, 0, 0])
 
+        if len(self.d) != len(self.a) != len(self.alpha) != 3:
+            raise ValueError("Each config parameter must have 3 frames!")
+        
         self.frames = 3
 
         # Create the Zero Configuration of the Robot
