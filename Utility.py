@@ -2,15 +2,9 @@ import numpy as np
 import numpy.typing as npt
 from scipy.linalg import expm
 
-def SSM(K: npt.NDArray):
+def SSM(K: npt.NDArray) -> npt.NDArray:
     """
-    Converts the given 1x3 vector into a skew-symmetric matrix.
-
-    Parameters:
-        K (Numpy Array): 1x3 vector to transform
-
-    Returns:
-        S (Numpy Array): 3x3 skew-symmetric matrix of the given vector.
+    Converts the given 1x3 vector into a 3x3 skew-symmetric matrix.
     """
     
     ssm = np.array([
@@ -23,7 +17,7 @@ def SSM(K: npt.NDArray):
 
 def Translate(D: npt.NDArray) -> npt.NDArray:
     """
-    Returns a transformation matrix with the given 1x3 displacement vector.
+    Returns a 4x4 transformation matrix with the given 1x3 displacement vector.
     """
     T = np.array([
         [1, 0, 0, D[0]],
@@ -36,7 +30,7 @@ def Translate(D: npt.NDArray) -> npt.NDArray:
 
 def Rotate(KTheta: npt.NDArray) -> npt.NDArray:
     """
-    Returns a transformation matrix rotating about the vector K * Theta.
+    Returns a 4x4 transformation matrix rotating about the vector K * Theta.
     """
     ssm = SSM(KTheta)
     T = np.block([
