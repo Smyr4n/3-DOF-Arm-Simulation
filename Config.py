@@ -1,6 +1,9 @@
 import json
 
 def Read_Config(dir):
+    """
+    Reads the given Config.json file and returns its DH parameters.
+    """
 
     try:
         with open(dir, 'r') as file:

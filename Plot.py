@@ -7,8 +7,13 @@ import Robot
 import Utility
 
 def Make_Plot(robot: Robot.Robot):
+    """
+    Creates the plot and GUI using the given robot.
 
-    # Initialize the plot with the new variables
+    The plot allows adjustment of theta values, and will update the robot configuration accordingly.
+    """
+
+    # Adjusts the plot based on the given FK results
     def _Plot_Arm(ax, Ts):
         ax.cla()
 
@@ -38,6 +43,7 @@ def Make_Plot(robot: Robot.Robot):
         _Plot_Arm(ax3D, Ts)
         fig.canvas.draw_idle()
 
+    # Create the base plot
     fig = plt.figure(figsize=(8, 8))
     ax3D = fig.add_subplot(111, projection='3d')
 
@@ -49,10 +55,12 @@ def Make_Plot(robot: Robot.Robot):
     theta2_slider = Slider(plt.axes((0.15, 0.15, 0.70, 0.03)), 'θ2: ', -180.0, 180.0)
     theta3_slider = Slider(plt.axes((0.15, 0.20, 0.70, 0.03)), 'θ3: ', -180.0, 180.0)
 
+    # Initialize callback functions
     theta1_slider.on_changed(_Update)
     theta2_slider.on_changed(_Update)
     theta3_slider.on_changed(_Update)
 
+    # Initialize slider values
     theta1_slider.set_val(0.0)
     theta2_slider.set_val(0.0)
     theta3_slider.set_val(0.0)
