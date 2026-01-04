@@ -57,7 +57,3 @@ def Make_Plot(robot: Robot.Robot):
 
     ax3D.set_title("3-DOF Robot Arm Simulation")
     plt.show()
-
-if __name__ == "__main__":
-    robot = Robot.Robot()
-    Make_Plot(robot)
