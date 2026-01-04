@@ -6,8 +6,6 @@ from mpl_toolkits.mplot3d import Axes3D
 import Robot
 import Utility
 
-robot = Robot.Robot()
-
 def Make_Plot(robot: Robot.Robot):
 
     # Initialize the plot with the new variables
