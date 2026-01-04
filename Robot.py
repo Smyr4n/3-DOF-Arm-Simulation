@@ -11,9 +11,9 @@ class Robot():
         """
 
         # Zero Configuration Parameters
-        self.d = np.array([0, 0, 0])
-        self.a = np.array([0, 2, 2])
-        self.alpha = np.array([np.pi/2, 0, 0])
+        self.d = np.array(d)
+        self.a = np.array(a)
+        self.alpha = np.array(alpha)
 
         if len(self.d) != len(self.a) != len(self.alpha) != 3:
             raise ValueError("Each config parameter must have 3 frames!")
