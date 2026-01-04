@@ -28,10 +28,10 @@ class Robot():
         Ts = []
         for i in range(self.frames):
             T = np.eye(4)
-            T *= Utility.Translate(np.array([0, 0, self.d[i]]))
-            T *= Utility.Rotate(np.array([0, 0, theta[i]]))
-            T *= Utility.Translate(np.array([self.a[i], 0, 0]))
-            T *= Utility.Rotate(np.array([self.alpha[i], 0, 0]))
+            T = T @ Utility.Translate(np.array([0, 0, self.d[i]]))
+            T = T @ Utility.Rotate(np.array([0, 0, theta[i]]))
+            T = T @ Utility.Translate(np.array([self.a[i], 0, 0]))
+            T = T @ Utility.Rotate(np.array([self.alpha[i], 0, 0]))
             Ts.append(T)
         return np.array(Ts)
 
