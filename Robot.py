@@ -37,8 +37,3 @@ class Robot():
             T = T @ Utility.Rotate(np.array([self.alpha[i], 0, 0]))
             Ts.append(T.copy())
         return np.array(Ts)
-
-    def IK(self):
-        """
-        Returns the joint space coordinates of the desired pose.
-        """
