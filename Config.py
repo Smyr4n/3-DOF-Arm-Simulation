@@ -1,9 +1,9 @@
 import json
 
-def Read_Config():
+def Read_Config(dir):
 
     try:
-        with open("Config.json", 'r') as file:
+        with open(dir, 'r') as file:
             data = json.load(file)
         
         d = data["d"]
