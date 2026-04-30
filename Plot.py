@@ -45,6 +45,7 @@ def Make_Plot(robot: Robot.Robot):
 
     # Create the base plot
     fig = plt.figure(figsize=(8, 8))
+    fig.suptitle("3-DOF Robot Arm Manipulator", fontsize=16)
     ax3D = fig.add_subplot(111, projection='3d')
 
     # Shrink the plot upwards by 30% to make room for the sliders
@@ -65,5 +66,5 @@ def Make_Plot(robot: Robot.Robot):
     theta2_slider.set_val(0.0)
     theta3_slider.set_val(0.0)
 
-    ax3D.set_title("3-DOF Robot Arm Simulation")
+    ax3D.set_title("A simulation created by Smyr4n")
     plt.show()
