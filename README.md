@@ -5,6 +5,9 @@ This project is a Python-exclusive simulation that calculates the forward kinema
 
 The zero configuration parameters of the robot can be adjusted in the Config.json file. The robot only uses rotary joints and no prismatic joints.
 
+![Robot_Arm_Up](Images/Arm_Up.png "Robot Arm Up")
+![Robot_Arm_Down](Images/Arm_Down.png "Robot Arm Down")
+
 ## Review ✏️
 
 This project was a simple test I wanted to give myself to see how well I could apply some of the knowledge I've learned from my Robotics courses. Due to the small scope and the simplicity of the project, Python was used, thanks to its variety of libraries (Numpy, Matplotlib, etc.).
